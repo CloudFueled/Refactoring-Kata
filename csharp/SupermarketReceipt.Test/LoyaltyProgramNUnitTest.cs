@@ -4,7 +4,7 @@ namespace SupermarketReceipt.Test
 {
     public class LoyaltyProgramNUnitTest
     {
-        [TestCase]
+        [Test]
         public void BronzeTierBasicPoints()
         {
             // ARRANGE
@@ -25,7 +25,7 @@ namespace SupermarketReceipt.Test
             Assert.AreEqual(0.99, points);
         }
 
-        [TestCase]
+        [Test]
         public void GoldTierProduceDoublePoints()
         {
             // ARRANGE
@@ -47,7 +47,7 @@ namespace SupermarketReceipt.Test
             Assert.AreEqual(39.8, points, 0.01);
         }
 
-        [TestCase]
+        [Test]
         public void SilverTierProduceOneAndHalfPoints()
         {
             // ARRANGE
@@ -69,7 +69,7 @@ namespace SupermarketReceipt.Test
             Assert.AreEqual(29.85, points, 0.01);
         }
 
-        [TestCase]
+        [Test]
         public void ExampleFromRequirements_GoldTierMixedCart()
         {
             // ARRANGE - €50 receipt with €20 produce = 70 points for Gold tier
@@ -95,7 +95,7 @@ namespace SupermarketReceipt.Test
             Assert.AreEqual(70.0, points, 0.01);
         }
 
-        [TestCase]
+        [Test]
         public void GoldTierNonProduceBasePoints()
         {
             // ARRANGE
@@ -117,7 +117,7 @@ namespace SupermarketReceipt.Test
             Assert.AreEqual(0.99, points);
         }
 
-        [TestCase]
+        [Test]
         public void SilverTierNonProduceBasePoints()
         {
             // ARRANGE
@@ -139,7 +139,7 @@ namespace SupermarketReceipt.Test
             Assert.AreEqual(0.99, points);
         }
 
-        [TestCase]
+        [Test]
         public void TierThresholds()
         {
             // ASSERT

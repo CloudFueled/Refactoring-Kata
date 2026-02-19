@@ -20,34 +20,32 @@ namespace SupermarketReceipt
             };
         }
 
+        private static double GetProduceMultiplier(LoyaltyTier tier)
+        {
+            return tier switch
+            {
+                LoyaltyTier.Gold => 2.0,
+                LoyaltyTier.Silver => 1.5,
+                _ => 1.0
+            };
+        }
+
         public static double CalculatePoints(Receipt receipt, LoyaltyTier tier)
         {
             double totalPoints = 0;
+            double produceMultiplier = GetProduceMultiplier(tier);
 
             foreach (var item in receipt.GetItems())
             {
-                var itemPrice = item.TotalPrice;
-                var basePoints = itemPrice; // 1 point per €1
+                var basePoints = item.TotalPrice; // 1 point per €1
 
                 if (item.Product.Category == ProductCategory.Produce)
                 {
-                    // Apply tier multipliers for produce
-                    if (tier == LoyaltyTier.Gold)
-                    {
-                        totalPoints += basePoints * 2.0; // 2x points for Gold
-                    }
-                    else if (tier == LoyaltyTier.Silver)
-                    {
-                        totalPoints += basePoints * 1.5; // 1.5x points for Silver
-                    }
-                    else
-                    {
-                        totalPoints += basePoints; // Bronze gets base points
-                    }
+                    totalPoints += basePoints * produceMultiplier;
                 }
                 else
                 {
-                    totalPoints += basePoints; // Non-produce gets base points
+                    totalPoints += basePoints;
                 }
             }
 
