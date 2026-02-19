@@ -4,14 +4,16 @@ namespace SupermarketReceipt
 {
     public class Product
     {
-        public Product(string name, ProductUnit unit)
+        public Product(string name, ProductUnit unit, ProductCategory category = ProductCategory.Other)
         {
             Name = name;
             Unit = unit;
+            Category = category;
         }
 
         public string Name { get; }
         public ProductUnit Unit { get; }
+        public ProductCategory Category { get; }
 
         public override bool Equals(object obj)
         {
@@ -46,5 +48,11 @@ namespace SupermarketReceipt
     {
         Kilo,
         Each
+    }
+
+    public enum ProductCategory
+    {
+        Produce,
+        Other
     }
 }
